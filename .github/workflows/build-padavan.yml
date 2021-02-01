@@ -20,7 +20,8 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
-
+    name: 编译${{ env.TNAME }} 
+    
     steps:
     - name: Checkout
       uses: actions/checkout@master
@@ -40,7 +41,7 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: NEWIFI-MINI.config
+        TNAME: NEWIFI-MINI
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
